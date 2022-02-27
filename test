@@ -1,0 +1,12 @@
+#!/bin/bash
+declare -a a=()
+for n in {1..500}; do
+    a[$RANDOM]=$n
+done
+ARG="${a[@]}"
+echo "---checker_linux---"
+./push_swap $ARG | ./checker_linux $ARG
+echo "---my_checker---"
+./push_swap $ARG | ./checker $ARG
+echo "---commands number---"
+./push_swap $ARG | wc -l
